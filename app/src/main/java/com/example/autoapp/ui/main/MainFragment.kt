@@ -32,7 +32,7 @@ class MainFragment : Fragment() {
 
 //        mViewModel.bookmarksList.observe(viewLifecycleOwner, Observer { adapter.setItems(it) })
 
-        mainFragmentViewModel.auto.observe(viewLifecycleOwner, Observer { adapter.setData(it) } )
+        mainFragmentViewModel.auto.observe(viewLifecycleOwner, { adapter.setData(it) } )
 
         return binding?.root
     }

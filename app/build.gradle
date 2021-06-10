@@ -74,6 +74,4 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.4.0-alpha02"
     kapt "androidx.lifecycle:lifecycle-compiler:2.3.1"
 
-    // ViewModel
-
 }

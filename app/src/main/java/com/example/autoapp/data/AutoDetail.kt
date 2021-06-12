@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 class AutoDetail(
 
     @SerializedName("id")
-    val id: Int? = 0,
+    val id: String,
     @SerializedName("image")
     val image: String? = "",
     @SerializedName("title")

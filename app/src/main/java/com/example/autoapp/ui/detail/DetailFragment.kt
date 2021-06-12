@@ -18,19 +18,21 @@ class DetailFragment : Fragment() {
 
     private val detailFragmentViewModel: DetailFragmentViewModel by viewModel()
 
-    private fun bindData(itemId: Int, list: List<AutoDetail>) {
-        binding?.imImageAuto?.let { Glide.with(requireContext()).load(list[itemId].image).into(it) }
-        binding?.tvTitle?.text = list[itemId].title
-        binding?.includeAutoDetail?.tvProducer?.text = list[itemId].producer
-        binding?.includeAutoDetail?.tvModel?.text = list[itemId].model
-        binding?.includeAutoDetail?.tvYearOfIssue?.text = list[itemId].year
-        binding?.includeAutoDetail?.tvCost?.text = list[itemId].cost
+    private fun bindData(itemId: String, list: List<AutoDetail>) {
+        val correctList = list.filter { it.id == itemId }[0]
+
+        binding?.imImageAuto?.let { Glide.with(requireContext()).load(correctList.image).into(it) }
+        binding?.tvTitle?.text = correctList.title
+        binding?.includeAutoDetail?.tvProducer?.text = correctList.producer
+        binding?.includeAutoDetail?.tvModel?.text = correctList.model
+        binding?.includeAutoDetail?.tvYearOfIssue?.text = correctList.year
+        binding?.includeAutoDetail?.tvCost?.text = correctList.cost
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
 
-        val args: Int? = arguments?.getInt(ID_ITEM_AUTO)
+        val args: String? = arguments?.getString(ID_ITEM_AUTO)
         detailFragmentViewModel.autoDetail.observe(viewLifecycleOwner, { autoDetail ->
             args?.let { id ->
                 bindData(id, autoDetail)

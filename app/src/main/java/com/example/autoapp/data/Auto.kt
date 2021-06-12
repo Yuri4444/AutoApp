@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class Auto(
 
     @SerializedName("id")
-    val id: Int,
-    @SerializedName("name")
-    val name: String = "",
+    val id: String,
+    @SerializedName("title")
+    val title: String = "",
     @SerializedName("image")
     val image: String = ""
 )

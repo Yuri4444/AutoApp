@@ -13,7 +13,7 @@ class AutoAdapter(private val context: Context,
     private val list: MutableList<Auto> = ArrayList()
 
     interface ClickListener {
-        fun onItemSelected(id : Int)
+        fun onItemSelected(id : String)
     }
 
     fun setData(listAuto: List<Auto>) {
@@ -38,7 +38,7 @@ class AutoAdapter(private val context: Context,
 
         init {
             binding.root.setOnClickListener {
-                clickListener.onItemSelected(list[adapterPosition].id - 1)
+                clickListener.onItemSelected(list[adapterPosition].id)
             }
         }
 
@@ -47,7 +47,7 @@ class AutoAdapter(private val context: Context,
                 .load(modelAuto.image)
                 .into(binding.ivImageAuto)
 
-            binding.tvTitle.text = modelAuto.name
+            binding.tvTitle.text = modelAuto.title
         }
 
     }

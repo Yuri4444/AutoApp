@@ -21,9 +21,9 @@ class MainFragment : Fragment() {
     private lateinit var contactNavController: NavControllerBridge
     private val adapter by lazy {
         AutoAdapter(requireContext(), object : AutoAdapter.ClickListener {
-            override fun onItemSelected(id: Int) {
+            override fun onItemSelected(id: String) {
                 val bundle = Bundle()
-                bundle.putInt(ID_ITEM_AUTO, id)
+                bundle.putString(ID_ITEM_AUTO, id)
                 contactNavController.navController()
                     .navigate(R.id.action_mainFragment_to_detailFragment, bundle)
             }

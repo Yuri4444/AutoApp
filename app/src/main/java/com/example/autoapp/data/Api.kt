@@ -4,9 +4,9 @@ import retrofit2.http.GET
 
 interface Api {
 
-    @GET("v3/3021ec1f-b702-4b60-a6f6-ae3f919016d1")
+    @GET("v3/34dfaa81-4d84-4fd5-87f8-7c300adbe962")
     suspend fun getAllAuto() : List<Auto>
 
-    @GET("v3/ff5c4c3e-7e40-4e93-985c-b8751c0257d9")
+    @GET("v3/ec02f26b-5668-496c-a802-a55cd3d99d0c")
     suspend fun getDetailAuto() : List<AutoDetail>
 }

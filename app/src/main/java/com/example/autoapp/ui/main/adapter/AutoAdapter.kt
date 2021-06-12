@@ -5,13 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.autoapp.data.AutoModel
+import com.example.autoapp.data.Auto
 import com.example.autoapp.databinding.ItemAutoBinding
 
-class AutoAdapter(private val context: Context) : RecyclerView.Adapter<AutoAdapter.ViewHolder>() {
-    private val list: MutableList<AutoModel> = ArrayList()
+class AutoAdapter(private val context: Context,
+                  private val clickListener: ClickListener ) : RecyclerView.Adapter<AutoAdapter.ViewHolder>() {
+    private val list: MutableList<Auto> = ArrayList()
 
-    fun setData(listAuto: List<AutoModel>) {
+    interface ClickListener {
+        fun onItemSelected(id : Int)
+    }
+
+    fun setData(listAuto: List<Auto>) {
         list.clear()
         list.addAll(listAuto)
         notifyDataSetChanged()
@@ -30,12 +35,19 @@ class AutoAdapter(private val context: Context) : RecyclerView.Adapter<AutoAdapt
     override fun getItemCount() = list.size
 
     inner class ViewHolder(private val binding: ItemAutoBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindData(modelAuto: AutoModel) {
+
+        init {
+            binding.root.setOnClickListener {
+                clickListener.onItemSelected(list[adapterPosition].id - 1)
+            }
+        }
+
+        fun bindData(modelAuto: Auto) {
             Glide.with(context)
                 .load(modelAuto.image)
-                .into(binding.ivImage)
+                .into(binding.ivImageAuto)
 
-            binding.tvName.text = modelAuto.name
+            binding.tvTitle.text = modelAuto.name
         }
 
     }

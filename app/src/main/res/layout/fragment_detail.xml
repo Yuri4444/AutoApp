@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.detail.DetailFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imImageAuto"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_250dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/car" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imFragProducer"
+            android:layout_width="@dimen/margin_100dp"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_gravity="bottom|end" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:gravity="center"
+        android:padding="@dimen/padding_5dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tv_20dp"
+        android:textStyle="bold|italic"
+        tools:text="Ferrari" />
+
+    <include
+        android:id="@+id/includeAutoDetail"
+        layout="@layout/auto_detail" />
+
+</LinearLayout>

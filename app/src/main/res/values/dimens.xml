@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_250dp">250dp</dimen>
+    <dimen name="tv_20dp">20sp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="tv_40dp">40dp</dimen>
+    <dimen name="margin_100dp">100dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="tv_16sp">16sp</dimen>
+    <dimen name="tv_18sp">18sp</dimen>
+</resources>

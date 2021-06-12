@@ -1,40 +1,52 @@
 package com.example.autoapp.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.autoapp.R
 import com.example.autoapp.databinding.FragmentMainBinding
-import org.koin.dsl.module
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.autoapp.ui.NavControllerBridge
 import com.example.autoapp.ui.main.adapter.AutoAdapter
-
-val mainFragmentModule = module {
-    factory { MainFragment() }
-}
+import com.example.autoapp.utils.constants.Constants.ID_ITEM_AUTO
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
-    private var _binding : FragmentMainBinding? = null
+    private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding
 
-    private val adapter by lazy { AutoAdapter(requireContext()) }
+    private lateinit var contactNavController: NavControllerBridge
+    private val adapter by lazy {
+        AutoAdapter(requireContext(), object : AutoAdapter.ClickListener {
+            override fun onItemSelected(id: Int) {
+                val bundle = Bundle()
+                bundle.putInt(ID_ITEM_AUTO, id)
+                contactNavController.navController()
+                    .navigate(R.id.action_mainFragment_to_detailFragment, bundle)
+            }
+        })
+    }
     private val mainFragmentViewModel: MainFragmentViewModel by viewModel()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        contactNavController = context as NavControllerBridge
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
-
-        binding?.rvMain?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding?.rvMain?.adapter = adapter
 
-//        mViewModel.bookmarksList.observe(viewLifecycleOwner, Observer { adapter.setItems(it) })
-
-        mainFragmentViewModel.auto.observe(viewLifecycleOwner, { adapter.setData(it) } )
-
+        mainFragmentViewModel.auto.observe(viewLifecycleOwner, { adapter.setData(it) })
         return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mainFragmentViewModel.fetchAutos()
     }
 
     override fun onDestroyView() {

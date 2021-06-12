@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AutoApp</string>
+    <string name="producer">Producer</string>
+    <string name="model">Model</string>
+    <string name="year_of_issue">Year of issue</string>
+    <string name="cost">Cost</string>
+    <string name="car">Car</string>
 </resources>

@@ -1,28 +1,24 @@
 package com.example.autoapp.ui.main
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.example.autoapp.data.AutoModel
+import com.example.autoapp.data.Auto
 import com.example.autoapp.domain.AutoRepository
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.dsl.module
-
-val mainFragmentViewModelModule = module {
-    viewModel { MainFragmentViewModel(get()) }
-}
+import com.example.autoapp.utils.extensions.viewModel.ioToUi
 
 class MainFragmentViewModel(private val autoRepository: AutoRepository) : ViewModel() {
 
-    val auto: LiveData<List<AutoModel>> = liveData {
-        emit(autoRepository.getAuto())
+    val auto = MutableLiveData<List<Auto>>()
+
+    fun fetchAutos() {
+        ioToUi(
+            io = {
+                val result = autoRepository.getAuto()
+                result
+            },
+            ui = {
+                auto.value = it
+            }
+        )
     }
-
-//    fun fetchAutos() {
-//        val result = autoRepository.getAuto()
-//        auto.value = result
-//    }
-
-
-
 }

@@ -33,7 +33,7 @@
         android:gravity="center"
         android:padding="@dimen/padding_5dp"
         android:textColor="@color/white"
-        android:textSize="@dimen/tv_20dp"
+        android:textSize="@dimen/tv_20sp"
         android:textStyle="bold|italic"
         tools:text="Ferrari" />
 

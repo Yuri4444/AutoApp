@@ -5,4 +5,10 @@
     <string name="year_of_issue">Year of issue</string>
     <string name="cost">Cost</string>
     <string name="car">Car</string>
+    <string name="create_new_auto">Create new auto</string>
+    <string name="year">Year</string>
+    <string name="title">Title</string>
+    <string name="create">Create</string>
+    <string name="change_auto">Change auto</string>
+    <string name="change">Change</string>
 </resources>

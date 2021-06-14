@@ -2,7 +2,7 @@ package com.example.autoapp.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.autoapp.data.Auto
+import com.example.autoapp.data.model.Auto
 import com.example.autoapp.domain.AutoRepository
 import com.example.autoapp.utils.extensions.viewModel.ioToUi
 

@@ -47,6 +47,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainFragmentViewModel.fetchAutos()
+
+        binding?.fbChange?.setOnClickListener { contactNavController.navController().navigate(R.id.action_mainFragment_to_changeFragment) }
+        binding?.fbCreate?.setOnClickListener { contactNavController.navController().navigate(R.id.action_mainFragment_to_createFragment) }
+
     }
 
     override fun onDestroyView() {

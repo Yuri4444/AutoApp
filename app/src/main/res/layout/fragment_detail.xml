@@ -17,11 +17,12 @@
             android:scaleType="centerCrop"
             android:contentDescription="@string/car" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/imFragProducer"
             android:layout_width="@dimen/margin_100dp"
             android:layout_height="@dimen/margin_60dp"
-            android:layout_gravity="bottom|end" />
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/app_name" />
 
     </FrameLayout>
 

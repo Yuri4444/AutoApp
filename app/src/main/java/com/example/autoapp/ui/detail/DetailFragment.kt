@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.autoapp.data.AutoDetail
+import com.example.autoapp.data.model.AutoDetail
 import com.example.autoapp.databinding.FragmentDetailBinding
 import com.example.autoapp.utils.constants.Constants.ID_ITEM_AUTO
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,6 +22,7 @@ class DetailFragment : Fragment() {
         val correctList = list.filter { it.id == itemId }[0]
 
         binding?.imImageAuto?.let { Glide.with(requireContext()).load(correctList.image).into(it) }
+        binding?.imFragProducer?.let { Glide.with(requireContext()).load(correctList.stateImage).into(it) }
         binding?.tvTitle?.text = correctList.title
         binding?.includeAutoDetail?.tvProducer?.text = correctList.producer
         binding?.includeAutoDetail?.tvModel?.text = correctList.model

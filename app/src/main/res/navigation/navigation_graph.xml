@@ -13,10 +13,26 @@
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_changeFragment"
+            app:destination="@id/changeFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.autoapp.ui.detail.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail"/>
+    <fragment
+        android:id="@+id/changeFragment"
+        android:name="com.example.autoapp.ui.change.ChangeFragment"
+        android:label="fragment_change"
+        tools:layout="@layout/fragment_change" />
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.example.autoapp.ui.create.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" />
 </navigation>

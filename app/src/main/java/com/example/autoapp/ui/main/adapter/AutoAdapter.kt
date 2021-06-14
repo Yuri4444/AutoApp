@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.autoapp.data.Auto
+import com.example.autoapp.data.model.Auto
 import com.example.autoapp.databinding.ItemAutoBinding
 
 class AutoAdapter(private val context: Context,
@@ -43,9 +43,7 @@ class AutoAdapter(private val context: Context,
         }
 
         fun bindData(modelAuto: Auto) {
-            Glide.with(context)
-                .load(modelAuto.image)
-                .into(binding.ivImageAuto)
+            Glide.with(context).load(modelAuto.image).into(binding.ivImageAuto)
 
             binding.tvTitle.text = modelAuto.title
         }

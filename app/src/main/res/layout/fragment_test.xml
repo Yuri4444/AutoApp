@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".uuTest.ui.TestFragment">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:hint="@string/id"
+        android:textColorHint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:hint="@string/image"
+        android:textColorHint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:hint="@string/title"
+        android:textColorHint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGoToList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/go_to_list"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+</LinearLayout>

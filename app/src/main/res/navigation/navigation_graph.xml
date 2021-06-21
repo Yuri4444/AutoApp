@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/selectFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -35,4 +35,30 @@
         android:name="com.example.autoapp.ui.create.CreateFragment"
         android:label="fragment_create"
         tools:layout="@layout/fragment_create" />
+    <fragment
+        android:id="@+id/selectFragment"
+        android:name="com.example.autoapp.ui.main.SelectFragment"
+        android:label="fragment_select"
+        tools:layout="@layout/fragment_select" >
+        <action
+            android:id="@+id/action_selectFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_selectFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.example.autoapp.uuTest.ui.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" >
+        <action
+            android:id="@+id/action_testFragment_to_listMbaasFragment"
+            app:destination="@id/listMbaasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listMbaasFragment"
+        android:name="com.example.autoapp.uuTest.ui.ListMbaasFragment"
+        android:label="fragment_list_mbaas"
+        tools:layout="@layout/fragment_list_mbaas" />
 </navigation>

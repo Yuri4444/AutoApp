@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ui.main.SelectFragment">
+
+    <TextView
+        android:layout_margin="@dimen/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/select_remote_service_please"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_34sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="@dimen/margin_60dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnMock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/mock"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBackendless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/backendless"
+        android:textColor="@color/white" />
+
+</LinearLayout>

@@ -12,6 +12,7 @@ class AppApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@AppApplication)
+//            modules(listOf(networkModule, networkModuleMbaas, autoRepositoryModule, fragmentModule, fragmentViewModelModule))
             modules(listOf(networkModule, autoRepositoryModule, fragmentModule, fragmentViewModelModule))
         }
     }

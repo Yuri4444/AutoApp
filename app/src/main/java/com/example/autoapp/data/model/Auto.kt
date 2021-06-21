@@ -2,17 +2,15 @@ package com.example.autoapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-//data class AutoMain (
-//    @SerializedName("autoList")
-//    val auto : List<Auto>
-//)
-
-data class Auto(
+class Auto {
 
     @SerializedName("id")
-    val id: String,
+    var id: String = ""
+
     @SerializedName("title")
-    val title: String = "",
+    var title: String = ""
+
     @SerializedName("image")
-    val image: String = "",
-)
+    var image: String = ""
+
+}

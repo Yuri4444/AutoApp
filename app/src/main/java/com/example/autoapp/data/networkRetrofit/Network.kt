@@ -29,6 +29,4 @@ class AuthInterceptor : Interceptor {
     }
 }
 
-//https://acutesofa.backendless.app/api/data/Auto
 const val API_URL = "https://run.mocky.io/"
-//const val API_URL = "https://acutesofa.backendless.app/api/data/"

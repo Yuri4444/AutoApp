@@ -9,7 +9,7 @@ import com.example.autoapp.databinding.ItemAutoBinding
 import com.example.autoapp.data.model.AutoList
 import java.util.ArrayList
 
-class AdapterMbaas(private val context: Context) : RecyclerView.Adapter<AdapterMbaas.ViewHolder>() {
+class AdapterMbaas(private val context: Context, private val clickListener: ClickListener) : RecyclerView.Adapter<AdapterMbaas.ViewHolder>() {
 
     private val list : MutableList<AutoList> = ArrayList()
 
@@ -17,6 +17,10 @@ class AdapterMbaas(private val context: Context) : RecyclerView.Adapter<AdapterM
         list.clear()
         if (newList != null) { list.addAll(newList) }
         notifyDataSetChanged()
+    }
+
+    interface ClickListener {
+        fun onItemSelected(id : String)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +36,12 @@ class AdapterMbaas(private val context: Context) : RecyclerView.Adapter<AdapterM
     override fun getItemCount() = list.size
 
     inner class ViewHolder(private val binding : ItemAutoBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                clickListener.onItemSelected(list[adapterPosition].id)
+            }
+        }
 
         fun bindData(modelAuto : AutoList) {
             Glide.with(context).load(modelAuto.image).into(binding.ivImageAuto)

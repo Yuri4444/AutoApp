@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/autoDetailsMbaas"
-        android:name="com.example.autoapp.ui.detailsBackendlessAuto.AutoDetailsMbaas"
+        android:name="com.example.autoapp.ui.detailsBackendlessAuto.AutoDetailsMbaasFragment"
         android:label="AutoDetailsMbaas"
         tools:layout="@layout/fragment_auto_details_mbaas"/>
 </navigation>

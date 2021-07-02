@@ -6,18 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import com.backendless.Backendless
 import com.backendless.async.callback.AsyncCallback
 import com.backendless.exceptions.BackendlessFault
 import com.example.autoapp.R
-import com.example.autoapp.databinding.FragmentListMbaasBinding
-import com.example.autoapp.utils.mbass.Defaults
 import com.example.autoapp.data.model.AutoList
+import com.example.autoapp.databinding.FragmentListMbaasBinding
 import com.example.autoapp.ui.NavControllerBridge
 import com.example.autoapp.ui.backendless.adapter.AdapterMbaas
+import com.example.autoapp.utils.mbass.Defaults
 
 class ListMbaasFragment : Fragment() {
 
@@ -25,7 +23,14 @@ class ListMbaasFragment : Fragment() {
     private val binding get() = _binding
     private var contactNavController: NavControllerBridge? = null
 
-    private val adapter by lazy { AdapterMbaas(requireContext()) }
+    private val adapter by lazy { AdapterMbaas(requireContext(), object : AdapterMbaas.ClickListener {
+        override fun onItemSelected(id: String) {
+            val bundle = Bundle()
+            bundle.putString("Good", id)
+            contactNavController?.navController()?.navigate(R.id.action_listMbaasFragment_to_autoDetailsMbaas, bundle)
+        }
+
+    }) }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

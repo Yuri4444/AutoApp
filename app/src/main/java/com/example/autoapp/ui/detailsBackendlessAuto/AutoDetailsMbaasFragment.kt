@@ -12,9 +12,10 @@ import com.backendless.exceptions.BackendlessFault
 import com.example.autoapp.data.model.CollectionList
 import com.example.autoapp.databinding.FragmentAutoDetailsMbaasBinding
 import com.example.autoapp.ui.detailsBackendlessAuto.adapter.SwipeListAdapter
+import com.example.autoapp.utils.constants.Constants
 import com.example.autoapp.utils.mbass.Defaults
 
-class AutoDetailsMbaas : Fragment() {
+class AutoDetailsMbaasFragment : Fragment() {
 
     private var _binding : FragmentAutoDetailsMbaasBinding? = null
     private val binding get() = _binding
@@ -26,14 +27,24 @@ class AutoDetailsMbaas : Fragment() {
         _binding = FragmentAutoDetailsMbaasBinding.inflate(layoutInflater, container, false)
         binding?.rvAutoHorizontal?.adapter = adapter
 
+        val args: String? = arguments?.getString("Good")
+
         Backendless.setUrl(Defaults.SERVER_URL)
         Backendless.initApp(requireContext(), Defaults.APPLICATION_ID, Defaults.API_KEY)
 
         Backendless.Persistence.of(CollectionList::class.java)
             .find(object : AsyncCallback<List<CollectionList>> {
                 override fun handleResponse(response: List<CollectionList>) {
-                    adapter.setData(response)
-                    Log.e("Backendless", "success -> $response")
+
+
+                        val concreteList = response.filter { it.idCar == args }
+
+
+
+
+
+                    adapter.setData(concreteList)
+                    Log.e("BackendlessDetails", "success -> ${response.count()}")
                 }
 
                 override fun handleFault(fault: BackendlessFault?) {

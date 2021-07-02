@@ -17,11 +17,6 @@ class BackendLessRepository(private val apiMbaas: ApiMbaas) {
 //        return Backendless.Data.of(AutoDetail::class.java).findFirst()
 //    }
 
-    suspend fun setAuto() : AutoDetail {
-        return apiMbaas.setNewAuto()
-
-    }
-
     suspend fun getAllAuto() = apiMbaas.getAutoList()
 
 

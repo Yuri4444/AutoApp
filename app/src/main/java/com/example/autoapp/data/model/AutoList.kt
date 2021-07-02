@@ -1,8 +1,8 @@
-package com.example.autoapp.uuTest.model
+package com.example.autoapp.data.model
 
 class AutoList {
 
-    var id: String? = ""
+    var id: String = ""
     var image: String? = ""
     var title: String? = ""
 }

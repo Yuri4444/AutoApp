@@ -45,20 +45,29 @@
             app:destination="@id/mainFragment" />
         <action
             android:id="@+id/action_selectFragment_to_testFragment"
-            app:destination="@id/testFragment" />
+            app:destination="@id/saveAutoMbaasFragment" />
     </fragment>
     <fragment
-        android:id="@+id/testFragment"
-        android:name="com.example.autoapp.uuTest.ui.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" >
+        android:id="@+id/saveAutoMbaasFragment"
+        android:name="com.example.autoapp.ui.saveAutoMbass.SaveAutoMbaasFragment"
+        android:label="fragment_save_auto_mbaas"
+        tools:layout="@layout/fragment_save_auto_mbaas" >
         <action
             android:id="@+id/action_testFragment_to_listMbaasFragment"
             app:destination="@id/listMbaasFragment" />
     </fragment>
     <fragment
         android:id="@+id/listMbaasFragment"
-        android:name="com.example.autoapp.uuTest.ui.ListMbaasFragment"
+        android:name="com.example.autoapp.ui.backendless.ListMbaasFragment"
         android:label="fragment_list_mbaas"
-        tools:layout="@layout/fragment_list_mbaas" />
+        tools:layout="@layout/fragment_list_mbaas" >
+        <action
+            android:id="@+id/action_listMbaasFragment_to_autoDetailsMbaas"
+            app:destination="@id/autoDetailsMbaas" />
+    </fragment>
+    <fragment
+        android:id="@+id/autoDetailsMbaas"
+        android:name="com.example.autoapp.ui.detailsBackendlessAuto.AutoDetailsMbaas"
+        android:label="AutoDetailsMbaas"
+        tools:layout="@layout/fragment_auto_details_mbaas"/>
 </navigation>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".uuTest.ui.TestFragment">
+    tools:context=".ui.saveAutoMbass.SaveAutoMbaasFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etId"

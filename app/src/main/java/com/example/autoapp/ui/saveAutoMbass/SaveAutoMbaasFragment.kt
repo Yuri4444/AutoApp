@@ -1,4 +1,4 @@
-package com.example.autoapp.uuTest.ui
+package com.example.autoapp.ui.saveAutoMbass
 
 import android.content.Context
 import android.os.Bundle
@@ -11,14 +11,14 @@ import com.backendless.Backendless
 import com.backendless.async.callback.AsyncCallback
 import com.backendless.exceptions.BackendlessFault
 import com.example.autoapp.R
-import com.example.autoapp.databinding.FragmentTestBinding
+import com.example.autoapp.data.model.AutoList
+import com.example.autoapp.databinding.FragmentSaveAutoMbaasBinding
 import com.example.autoapp.ui.NavControllerBridge
 import com.example.autoapp.utils.mbass.Defaults
-import com.example.autoapp.uuTest.model.AutoList
 
-class TestFragment : Fragment() {
+class SaveAutoMbaasFragment : Fragment() {
 
-    private var _binding: FragmentTestBinding? = null
+    private var _binding: FragmentSaveAutoMbaasBinding? = null
     private val binding get() = _binding
 
     private lateinit var contactNavController: NavControllerBridge
@@ -29,7 +29,7 @@ class TestFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentTestBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentSaveAutoMbaasBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
 

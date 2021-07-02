@@ -29,7 +29,7 @@ class AutoAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        return (holder).bindData(list[position])
+        return holder.bindData(list[position])
     }
 
     override fun getItemCount() = list.size

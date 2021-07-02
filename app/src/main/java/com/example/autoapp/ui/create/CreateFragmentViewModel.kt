@@ -12,16 +12,16 @@ class CreateFragmentViewModel(private val backendLessRepository: BackendLessRepo
     val auto = MutableLiveData<AutoDetail>()
 
 
-    fun setNewAuto() {
-        ioToUi(
-            io = {
-                val result = backendLessRepository.setAuto()
-                result
-            },
-            ui = {
-                auto.value = it
-            }
-        )
-    }
+//    fun setNewAuto() {
+//        ioToUi(
+//            io = {
+//                val result = backendLessRepository.getAllAuto()
+//                result
+//            },
+//            ui = {
+//                auto.value = it
+//            }
+//        )
+//    }
 
 }

@@ -13,9 +13,9 @@ class SwipeListAdapter(private val context: Context) : RecyclerView.Adapter<Swip
 
     val list: MutableList<CollectionList> = ArrayList()
 
-    fun setData(newList: List<CollectionList>?) {
+    fun setData(newList: List<CollectionList>) {
         list.clear()
-        if (newList != null) { list.addAll(newList) }
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 

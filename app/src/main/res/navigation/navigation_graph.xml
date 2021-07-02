@@ -60,14 +60,10 @@
         android:id="@+id/listMbaasFragment"
         android:name="com.example.autoapp.ui.backendless.ListMbaasFragment"
         android:label="fragment_list_mbaas"
-        tools:layout="@layout/fragment_list_mbaas" >
-        <action
-            android:id="@+id/action_listMbaasFragment_to_autoDetailsMbaas"
-            app:destination="@id/autoDetailsMbaas" />
-    </fragment>
+        tools:layout="@layout/fragment_list_mbaas" />
     <fragment
-        android:id="@+id/autoDetailsMbaas"
-        android:name="com.example.autoapp.ui.detailsBackendlessAuto.AutoDetailsMbaas"
-        android:label="AutoDetailsMbaas"
-        tools:layout="@layout/fragment_auto_details_mbaas"/>
+        android:id="@+id/swipeMbaasFragment"
+        android:name="com.example.autoapp.ui.detailsBackendlessAuto.SwipeMbaasFragment"
+        android:label="SwipeMbaasFragment"
+        tools:layout="@layout/fragment_swipe_mbaas"/>
 </navigation>

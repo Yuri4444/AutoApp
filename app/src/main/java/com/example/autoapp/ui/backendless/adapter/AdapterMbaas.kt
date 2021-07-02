@@ -13,9 +13,9 @@ class AdapterMbaas(private val context: Context) : RecyclerView.Adapter<AdapterM
 
     private val list : MutableList<AutoList> = ArrayList()
 
-    fun setData(newList: List<AutoList>?) {
+    fun setData(newList: List<AutoList>) {
         list.clear()
-        if (newList != null) { list.addAll(newList) }
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 

@@ -16,8 +16,10 @@ import com.example.autoapp.R
 import com.example.autoapp.databinding.FragmentListMbaasBinding
 import com.example.autoapp.utils.mbass.Defaults
 import com.example.autoapp.data.model.AutoList
+import com.example.autoapp.data.model.CollectionList
 import com.example.autoapp.ui.NavControllerBridge
 import com.example.autoapp.ui.backendless.adapter.AdapterMbaas
+import com.example.autoapp.ui.detailsBackendlessAuto.adapter.SwipeListAdapter
 
 class ListMbaasFragment : Fragment() {
 
@@ -26,6 +28,8 @@ class ListMbaasFragment : Fragment() {
     private var contactNavController: NavControllerBridge? = null
 
     private val adapter by lazy { AdapterMbaas(requireContext()) }
+
+    private val adapterSwipe by lazy { SwipeListAdapter(requireContext()) }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,6 +41,13 @@ class ListMbaasFragment : Fragment() {
 
         binding?.rvMain?.adapter = adapter
 
+        setMainRecyclerView()
+        setDaughterRecyclerView()
+
+        return binding?.root
+    }
+
+    private fun setMainRecyclerView() {
         Backendless.setUrl(Defaults.SERVER_URL)
         Backendless.initApp(requireContext(), Defaults.APPLICATION_ID, Defaults.API_KEY)
 
@@ -52,7 +63,24 @@ class ListMbaasFragment : Fragment() {
                 }
 
             })
-        return binding?.root
+    }
+
+    private fun setDaughterRecyclerView() {
+        Backendless.setUrl(Defaults.SERVER_URL)
+        Backendless.initApp(requireContext(), Defaults.APPLICATION_ID, Defaults.API_KEY)
+
+        Backendless.Persistence.of(CollectionList::class.java)
+            .find(object : AsyncCallback<List<CollectionList>> {
+                override fun handleResponse(response: List<CollectionList>?) {
+                    adapterSwipe.setData(response)
+                    Log.e("Success", "response -> $response")
+                }
+
+                override fun handleFault(fault: BackendlessFault?) {
+
+                }
+
+            })
     }
 
     override fun onDestroyView() {

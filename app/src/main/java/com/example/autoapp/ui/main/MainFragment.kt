@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import com.example.autoapp.R
 import com.example.autoapp.databinding.FragmentMainBinding
 import com.example.autoapp.ui.NavControllerBridge
+import com.example.autoapp.ui.detail.DetailFragment
 import com.example.autoapp.ui.main.adapter.AutoAdapter
-import com.example.autoapp.utils.constants.Constants.ID_ITEM_AUTO
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -22,10 +22,9 @@ class MainFragment : Fragment() {
     private val adapter by lazy {
         AutoAdapter(requireContext(), object : AutoAdapter.ClickListener {
             override fun onItemSelected(id: String) {
-                val bundle = Bundle()
-                bundle.putString(ID_ITEM_AUTO, id)
-                contactNavController.navController()
-                    .navigate(R.id.action_mainFragment_to_detailFragment, bundle)
+                
+                val detailFragment = DetailFragment.newInstance(id).requireArguments()
+                contactNavController.navController().navigate(R.id.action_mainFragment_to_detailFragment, detailFragment)
             }
         })
     }

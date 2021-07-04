@@ -2,7 +2,6 @@ package com.example.autoapp.ui.backendless
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.example.autoapp.data.model.AutoList
 import com.example.autoapp.databinding.FragmentListMbaasBinding
 import com.example.autoapp.ui.NavControllerBridge
 import com.example.autoapp.ui.backendless.adapter.AdapterMbaas
+import com.example.autoapp.ui.detailsBackendlessAuto.AutoDetailsMbaasFragment
 import com.example.autoapp.utils.mbass.Defaults
 
 class ListMbaasFragment : Fragment() {
@@ -25,9 +25,9 @@ class ListMbaasFragment : Fragment() {
 
     private val adapter by lazy { AdapterMbaas(requireContext(), object : AdapterMbaas.ClickListener {
         override fun onItemSelected(id: String) {
-            val bundle = Bundle()
-            bundle.putString("Good", id)
-            contactNavController?.navController()?.navigate(R.id.action_listMbaasFragment_to_autoDetailsMbaas, bundle)
+
+            val autoDetailsMbaasFragment = AutoDetailsMbaasFragment.newInstance(id).requireArguments()
+            contactNavController?.navController()?.navigate(R.id.action_listMbaasFragment_to_autoDetailsMbaas, autoDetailsMbaasFragment)
         }
 
     }) }
@@ -45,11 +45,10 @@ class ListMbaasFragment : Fragment() {
         Backendless.setUrl(Defaults.SERVER_URL)
         Backendless.initApp(requireContext(), Defaults.APPLICATION_ID, Defaults.API_KEY)
 
-        Backendless.Persistence.of(AutoList::class.java)
-            .find(object : AsyncCallback<List<AutoList>> {
+        Backendless.Persistence.of(AutoList::class.java).find(object : AsyncCallback<List<AutoList>> {
                 override fun handleResponse(response: List<AutoList>?) {
+
                     adapter.setData(response)
-                    Log.e("Success", "response -> $response")
                 }
 
                 override fun handleFault(fault: BackendlessFault?) {

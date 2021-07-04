@@ -1,7 +1,6 @@
 package com.example.autoapp.ui.detailsBackendlessAuto
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import com.example.autoapp.databinding.FragmentAutoDetailsMbaasBinding
 import com.example.autoapp.ui.detailsBackendlessAuto.adapter.SwipeListAdapter
 import com.example.autoapp.utils.mbass.Defaults
 
-
 class AutoDetailsMbaasFragment : Fragment() {
 
     private var _binding: FragmentAutoDetailsMbaasBinding? = null
@@ -28,25 +26,23 @@ class AutoDetailsMbaasFragment : Fragment() {
         _binding = FragmentAutoDetailsMbaasBinding.inflate(layoutInflater, container, false)
         binding?.rvAutoHorizontal?.adapter = adapter
 
-        val args: String? = arguments?.getString("Good")
+        val itemPosition = arguments?.getString(ARG_ITEM_POSITION)
 
-        val whereClause = "idCar = $args"
+        val whereClause = "idCar = $itemPosition"
         val queryBuilder = DataQueryBuilder.create()
         queryBuilder.whereClause = whereClause
 
         Backendless.setUrl(Defaults.SERVER_URL)
         Backendless.initApp(requireContext(), Defaults.APPLICATION_ID, Defaults.API_KEY)
 
-        Backendless.Persistence.of(CollectionList::class.java)
-            .find(queryBuilder, object : AsyncCallback<List<CollectionList>> {
+        Backendless.Persistence.of(CollectionList::class.java).find(queryBuilder, object : AsyncCallback<List<CollectionList>> {
                 override fun handleResponse(response: List<CollectionList>) {
 
                     adapter.setData(response)
-                    Log.e("BackendlessDetails", "success -> ${response.count()}")
                 }
 
                 override fun handleFault(fault: BackendlessFault?) {
-                    Log.e("Backendless", "fail -> $fault")
+
                 }
 
             })
@@ -57,6 +53,19 @@ class AutoDetailsMbaasFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val ARG_ITEM_POSITION = "arg_item_position"
+
+        fun newInstance(item: String): AutoDetailsMbaasFragment {
+            val bundle = Bundle()
+            bundle.putString(ARG_ITEM_POSITION, item)
+            return AutoDetailsMbaasFragment().apply {
+                arguments = bundle
+            }
+
+        }
     }
 
 }
